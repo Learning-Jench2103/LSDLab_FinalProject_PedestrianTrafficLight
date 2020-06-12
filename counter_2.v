@@ -12,7 +12,7 @@ module counter_2(clk ,rst,pause, quick ,sel);
 			sel <= sel;
 		end
 		else if(~quick) begin
-			if (count == 1023)begin
+			if (count == 1023) begin
 				count <= 0;
 				sel <= count[9:8];
 			end
@@ -22,7 +22,7 @@ module counter_2(clk ,rst,pause, quick ,sel);
 			end
 		end
 		else begin
-			if (count == 1023)begin
+			if (count == 1023) begin
 				count <= 0;
 				sel <= count[8:7];
 			end

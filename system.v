@@ -1,10 +1,8 @@
-module system(clk ,rst, pause, change_state, count_7seg, row ,column, pattern, divided_clk_2, count_7seg_2);
+module system(clk ,rst, pause, change_state, count_7seg, row ,column, count_7seg_2);
 	input clk ,rst, pause, change_state;
 	output [7:0] column ,row;
 	output [6:0] count_7seg;
 	output [6:0] count_7seg_2;
-	output pattern;
-	output divided_clk_2;
 	wire divided_clk_1 ,divided_clk_2 ,pattern;
 	wire [3:0] second;
 	wire [1:0]sel;

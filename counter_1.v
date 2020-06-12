@@ -14,39 +14,29 @@ module counter_1(clk ,rst, pause, change_state, second, pattern);
 		else if(change_state == 0)
 			change <= 1;
 		else if(change_state & change) begin
-			change = change;
-			change = change;
-			change = 0;
+			change <= 0;
 		end
 	end
 	
 	always@(posedge clk or posedge rst or posedge pause) begin
 		if(rst) begin
 			count <= 10;
-			//change <= 1;
 			end
 		else if (change_state & change) begin
-			//change <= 0;
-			if(count < 10) begin
+			if(second > 0) begin
 				count <= 14;
 			end
-			else 
+			else begin
 				count <= 9;
 			end
-		//else if (change_state)
-		//	;
-		//else if (!change_state & !change)
-		//	change <= 1;
+		end
 		else if (pause) begin
-			//change <= 1;
-			//count <= count;
+			count <= count;
 			end
 		else if (count == 0) begin
-			//change <= 1;
 			count <= 14;
 			end
 		else begin
-			//change <= 1;
 			count <= count - 1;
 			end
 	end

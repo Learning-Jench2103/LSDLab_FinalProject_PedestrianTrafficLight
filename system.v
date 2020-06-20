@@ -1,8 +1,9 @@
-module system(clk ,rst, pause, change_state, count_7seg, row ,column, count_7seg_2);
+module system(clk ,rst, pause, change_state, count_7seg, row ,column, count_7seg_2, red, green, yellow);
 	input clk ,rst, pause, change_state;
 	output [7:0] column ,row;
 	output [6:0] count_7seg;
 	output [6:0] count_7seg_2;
+	output red, yellow, green;
 	wire divided_clk_1 ,divided_clk_2 ,pattern;
 	wire [3:0] second;
 	wire [1:0]sel;
@@ -10,6 +11,27 @@ module system(clk ,rst, pause, change_state, count_7seg, row ,column, count_7seg
 	
 	reg [3:0] second_1;
 	reg [3:0] second_2;
+	
+	reg red, yellow, green;
+	
+	always@(posedge clk)
+	begin
+		if(second == 0) begin
+			red <= 1;
+			yellow <= 0;
+			green <= 0;
+		end
+		else if(second > 2) begin
+			red <= 0;
+			yellow <= 0;
+			green <= 1;
+		end
+		else begin
+			red <= 0;
+			yellow <= 1;
+			green <= 0;
+		end
+	end
 	
 	always@(second) begin
 		if(second >= 10) begin
